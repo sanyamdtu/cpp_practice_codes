@@ -36,7 +36,7 @@ node *buildtreeLevel()
         }
     }
     return root;
-}
+}//
 int height(node *root){
 	if(root==NULL)
 	 return -1;
