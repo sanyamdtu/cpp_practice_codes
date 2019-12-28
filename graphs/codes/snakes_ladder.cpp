@@ -7,6 +7,7 @@ class graphs{
 
     }
     void addedge(int u,int v,bool rev=1){
+//        cout<<"Source: "<<u<<" Destination: "<<v<<endl;
         my[u].push_back(v);
         if(rev){
             my[v].push_back(u);
@@ -14,6 +15,7 @@ class graphs{
     }
     void print(){
         for(auto i: my){
+            
             cout<<i.first<<"-> ";
             for(auto s:i.second){
                 cout<<s<<",";
@@ -79,19 +81,25 @@ class graphs{
     }
 };
 int main(){
+    int board[50]={0};
+    board[2]=13;
+    board[5]=2;
+    board[9]=18;
+    board[18]=11;
+    board[17]=-13;
+    board[20]=-14;
+    board[24]=-8;
+    board[25]=-10;
+    board[32]=-2;
+    board[34]=-22;
+    
     graphs g;
-    for(int i=1;i<=36;i++){
-        g.addedge(i,i+1,0);
+    for(int i=0;i<36;i++){
+        for(int dice=1;dice<=6;dice++){
+            int v=i+dice+board[i+dice];
+            g.addedge(i,v,0);
+        }
     }
-    g.addedge(34,12,0);
-    g.addedge(32,30,0);
-    g.addedge(24,16,0);
-    g.addedge(17,4,0);
-    g.addedge(20,6,0);
-    g.addedge(2,15,0);
-    g.addedge(5,7,0);
-    g.addedge(9,27,0);
-    g.addedge(18.29,0);
-    g.addedge(25,35,0);
+    g.sssp(0,36);
     return 0;
 }

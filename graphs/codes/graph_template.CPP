@@ -39,9 +39,8 @@ class graphs{
             visited.insert(pair<string,bool>(temp,1));
         }
     }
-    void dfs(string source){
+    void dfs(string source,map<string,bool> &visited){
         stack<string> q;
-        map<string,bool> visited;
         q.push(source);
         while(!q.empty()){
             string temp=q.top();
@@ -55,7 +54,19 @@ class graphs{
             }
             visited.insert(pair<string,bool>(temp,1));
         }
+        
     }
+    void dfshelper(){
+        map<string,bool> visited;
+        for(auto i:my){
+            for(auto s:i.second){
+                if(!visited[s]){
+                    dfs(s,visited);
+                    cout<<endl;
+                }
+            }
+        }
+    } 
     void sssp(string source,string destin){
         pair<string,int> pi,p,temp;
         queue<pair<string,int>> q;
@@ -85,6 +96,7 @@ int main(){
     g.addedge("sanyam","bittu");
     g.addedge("sarthak","ekkoo");
     g.addedge("ekkoo","shresth");
-    g.sssp("bittu","shresth");
+    g.addedge("shrey","shreyansh");
+    g.dfshelper();
     return 0;
 }
