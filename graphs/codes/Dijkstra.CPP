@@ -19,16 +19,16 @@ class graph{
         }
     }
     void dijsktra(T source){
-        map<T,int> dist;
+        map<T,int> dist;//map distance
         for(auto i:m)
-         dist[i]=INT_MAX;
+         dist[i]=INT_MAX;//all the distace of the nodes is infinite
         set<pair<T,int>> s;
         dist[source]=0;
         s.insert(pair<T,int>(0,source));
-        while(!.empty()){
-            auto p= *(s.begin());
+        while(!s.empty()){
+            auto p= *(s.begin());//start of the the set
             T node=p.second;
-            int nodedist=p.first;
+            int nodedist=p.first;  //  
             s.erase(s.begin);
             for(auto cldp: m[node]){
                 if(nodedist+cldp.second<dist[cldp.first]){
@@ -37,7 +37,8 @@ class graph{
                     if(f!=s.end){
                         s.erase(f);
                     }
-                    dist[dest]
+                    dist[dest]=nodedist+cldp.second;
+                    dist[dest].insert(make_pair())
                 }
             }
         }
