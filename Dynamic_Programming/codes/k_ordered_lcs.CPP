@@ -5,13 +5,12 @@ using namespace std;
 ll n,m,a[120],b[120];
     ll dp[2005][2005][51];
     ll f(ll i,ll j,ll k){
-        if(i==n|| j==m)
-         return 0;
-        
+        if(i==n || j==m)
+         return 0;     
         if(dp[i][j][k]!=-1)
          return dp[i][j][k];
         else{
-            ll res=0;
+            ll res=INT_MIN;
             if(a[i]==b[i]){
                 res=1+f(i+1,j+1,k);
             }
@@ -27,7 +26,12 @@ ll n,m,a[120],b[120];
         }
     }
 int main(){
-    memset(dp,-1,sizeof(dp));
+    for(int i=0;i<2005;i++){
+       for(int j=0;j<2005;j++){
+           for(int k=0;k<51;k++)
+             dp[i][j][k]=-1;
+        }
+    }
     ll k;
     cin>>n>>m>>k;
     for(int i=0;i<n;i++)
