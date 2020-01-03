@@ -21,7 +21,7 @@ ll n,m,a[120],b[120];
             }
             res=max(res,f(i+1,j,k));
             res=max(res,f(i,j+1,k));
-            dp[i][j][k]=res;
+            dp[i][j][k]=res; 
             return res;
         }
     }
