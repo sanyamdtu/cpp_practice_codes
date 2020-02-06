@@ -2,8 +2,8 @@
 using namespace std;
 //#include<bits/stdc++.h>
 //using namespace std;
-class que{
-	int arr[5];
+/*class que{
+	int arr[100];
 	int front;
 	int rear;
 	int cs;
@@ -37,40 +37,37 @@ class que{
 	 int getfront(){
 	 	return this->arr[this->front];
 	 }
-};
+};*/
 int main(){
-	int n=5,time=0;
+	int n,time=0;
 	cin>>n;
 	int k=0;
-	que qi(5);
-	que qc(5);
-	for(int i=0;i<5;i++){
-		cin>>k;
-		qi.push(k);
-	}
-	for(int i=0;i<5;i++){
+	queue<int> qi,qc;
+	for(int i=0;i<n;i++){
 		cin>>k;
 		qc.push(k);
 	}
-	cout<<endl;
+	for(int i=0;i<n;i++){
+		cin>>k;
+		qi.push(k);
+	}
 /*	while(!qi.empty()){
 		cout<<qi.getfront()<<" ";
 		qi.pop();		
 	}
 	*/
 	while(!qi.empty()){
-	    if(qi.getfront()==qc.getfront()){
+	    if(qi.front()==qc.front()){
 	    	//time+=qi.getfront();
 	    	time++;
 			qi.pop();
 	    	qc.pop();
 		}
 		else{
-			time++;
-			int num;
-			num=qc.getfront();
+			int num=qc.front();
 			qc.pop();
 			qc.push(num);
+			time++;
 		}		
 	}
 	cout<<time;

@@ -6,7 +6,7 @@ class node{
     node *left;
 };
 
-void add(int n,node *head){
+void add(long long int n,node *head){
     node *curr=head;
     for(int i=31;i>=0;i--){
         int bit=(n>>i)&1;
@@ -22,11 +22,11 @@ void add(int n,node *head){
         }
     }
 }    
-int maxpair(node *head,int arr[],int n,int el){
-    int maxxor=INT_MIN;
-    int value=el;
+long long int maxpair(node *head,long long int arr[],long long int n,long long int el){
+    long long int maxxor=INT_MIN;
+    long long int value=el;
     node *curr=head;
-    int currxor=0;
+    long long int currxor=0;
     for(int i=31;i>=0;i--){
         int bit=(value>>i)&1;
         if(bit==0){//if setbit is 0 then i should ideallly go to right
@@ -54,18 +54,18 @@ int maxpair(node *head,int arr[],int n,int el){
     return maxxor;
 }
 int main(){
-    int n;
+    long long int n;
     cin>>n;
-    int arr[n];
-    for(int i=0;i<n;i++)
+    long long int arr[n];
+    for(long long int i=0;i<n;i++)
      cin>>arr[i];
-    for(int i=1;i<n;i++){
+    for(long long int i=1;i<n;i++){
         arr[i]=arr[i]^arr[i-1];
     }
-     int resut=INT_MIN;
-     int x=0;
+    long long int resut=INT_MIN;
+    long long int x=0;
     node *head=new node();
-    for(int i=0;i<n;i++){
+    for(long long int i=0;i<n;i++){
         add(arr[i],head);
         x=maxpair(head,arr,n,arr[i]);
         resut=(resut>x)?resut:x;

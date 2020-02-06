@@ -1,11 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-int dp[100][100];
 int func(int i,int j,int arr[],int n){
     if(i>j)
      return 0;
-     if(dp[i][j]!=-1)
-      return dp[i][j];
     if(i==j)
      return arr[i];
     int sum1=0,sum2=0,sum3=0,sum4=0;
@@ -21,11 +18,10 @@ int func(int i,int j,int arr[],int n){
     if(q==sum3)
      return min(sum3,max(sum2,max(sum1,sum4)));
     else
-     return dp[i][j]=min(sum4,max(sum2,max(sum3,sum1)));
+     return min(sum4,max(sum2,max(sum3,sum1)));
     
 }
 int main(){
-    memset(dp,-1,sizeof(dp));
     int n;
     cin>>n;
     int arr[n];
